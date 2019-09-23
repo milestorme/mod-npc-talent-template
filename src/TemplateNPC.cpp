@@ -1,3 +1,11 @@
+/* =============================================================
+TO DO:
+• Merge human sql template with alliance template
+• As Barbz suggested: Rename to character_template the module 
+    and all related files (to be less confusing and less generic)
+• As Barbz suggested: Scaling system for twink servers
+================================================================ */
+
 #include "TemplateNPC.h"
 
 void sTemplateNPC::LearnPlateMailSpells(Player* player)
@@ -692,9 +700,9 @@ public:
             player->GetSession()->SendAreaTriggerMessage("Successfuly equipped %s %s template!", playerSpecStr.c_str(), sTemplateNpcMgr->GetClassString(player).c_str());
 
             if (player->getPowerType() == POWER_MANA)
-                player->SetMaxPower(POWER_MANA, 100);
+                player->SetPower(POWER_MANA, player->GetMaxPower(POWER_MANA));
 
-            player->SetFullHealth();
+            player->SetHealth(player->GetMaxHealth());
 
             // Learn Riding/Flying
             if (player->HasSpell(SPELL_Artisan_Riding) ||
